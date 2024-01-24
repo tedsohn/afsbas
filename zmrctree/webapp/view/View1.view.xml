@@ -1,0 +1,203 @@
+<mvc:View
+    controllerName="zmrctree.controller.View1"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:dnd="sap.ui.core.dnd"
+    height="100%"
+>
+    <m:Page
+        showHeader="false"
+        enableScrolling="false"
+    >
+        <m:content>
+            <TreeTable
+                id="TreeTable"
+                rows="{path:'nodeModel>/nodeRoot', 
+                parameters: {arrayNames:['children']}}"
+                selectionMode="MultiToggle"
+                enableSelectAll="false"
+                ariaLabelledBy="title"
+                height="100%"
+                visibleRowCountMode="Auto"
+            >
+                <extension>
+                    <m:OverflowToolbar style="Clear">
+                        <m:Button
+                            id='toggleExpandButton'
+                            text="{= ${generalModel>/collapseExpandState} ? 'Expand All' : 'Collapse'}"
+                            press="onToggleExpand"
+                        />
+                        <m:Button
+                            id='secondLevelExpandButton'
+                            text="Second Level"
+                            press="onExpandSecondLevel"
+                        />
+                        <m:Button
+                            id='expandNodeButton'
+                            text="Expand Node"
+                            press="onExpandNode"
+                        />
+                        <m:Button
+                            id="removeColumnButton"
+                            text="Remove Keys"
+                            press="onToggleRemoveColumn"
+                        />
+
+                        <m:Button
+                            text="Insert"
+                            press="onInsert"
+                        />
+                        <m:Button
+                            text="Append"
+                            press="onAppend"
+                        />
+                        <m:Button
+                            text="Delete"
+                            press="onDelete"
+                        />
+                        <m:Button
+                            id="copy"
+                            text="Copy"
+                            press="onCopy"
+                        />
+                        <m:MenuButton
+                            id="paste"
+                            text="Paste"
+                        >
+                            <m:menu>
+                                <m:Menu>
+                                    <m:MenuItem
+                                        id="cancelCopy"
+                                        text="Cancel Paste"
+                                        press="onCancelCopy"
+                                        enabled="false"
+                                    />
+                                    <m:MenuItem
+                                        id="pasteTree"
+                                        text="Paste Tree"
+                                        press="onPasteTree"
+                                        enabled="false"
+                                    />
+                                    <m:MenuItem
+                                        id="pasteSelect"
+                                        text="Paste"
+                                        press="onPasteSelect"
+                                        enabled="false"
+                                    />
+                                </m:Menu>
+                            </m:menu>
+                        </m:MenuButton>
+                        <m:Button
+                            id='toggleEditButton'
+                            text="{= ${generalModel>/editModeAllLines} ? 'Save Local' : 'Edit Mode'}"
+                            press="onToggleEdit"
+                        />
+                        <m:Button
+                            text="Persist"
+                            press="onSaveAll"
+                        />
+                        <m:ToolbarSpacer />
+
+                        <m:SearchField
+                            width="auto"
+                            search="onSearch"
+                            liveChange="onLiveChange"
+                        />
+                    </m:OverflowToolbar>
+                </extension>
+                <dragDropConfig>
+                    <dnd:DragDropInfo
+                        sourceAggregation="rows"
+                        targetAggregation="rows"
+                        dragStart="onDragStart"
+                        drop="onDrop"
+                    />
+                </dragDropConfig>
+                <columns>
+                    <Column width="10rem">
+                        <m:Label text="Code" />
+                        <template>
+                            <m:Input
+                                value="{nodeModel>code}"
+                                editable="{generalModel>/editModeAllLines}"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+                    <Column width="13rem">
+                        <m:Label text="Description" />
+                        <template>
+                            <m:Input
+                                value="{nodeModel>text}"
+                                editable="{generalModel>/editModeAllLines}"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+
+                    <Column width="13rem">
+                        <m:Label text="Key" />
+                        <template>
+                            <m:Text
+                                text="{nodeModel>id}"
+                                editable="false"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+
+                    <Column width="6rem">
+                        <m:Label text="Dimension" />
+                        <template>
+                            <m:Input
+                                value="{nodeModel>dimension}"
+                                editable="{generalModel>/editModeAllLines}"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+
+                    <Column width="10rem">
+                        <m:Label text="Size" />
+                        <template>
+                            <m:Select
+                                items="{path: 'sizes>/catalog/sizes', templateShareable: true}"
+                                selectedKey="{nodeModel>size}"
+                                editable="{generalModel>/editModeAllLines}"
+                                visible="{= !!${sizes>/catalog/sizes}}"
+                                forceSelection="false"
+                            >
+                                <core:Item
+                                    key="{sizes>key}"
+                                    text="{sizes>value}"
+                                />
+                            </m:Select>
+                        </template>
+                    </Column>
+                    <Column width="13rem">
+                        <m:Label text="Parent" />
+                        <template>
+                            <m:Text
+                                text="{nodeModel>parentKey}"
+                                editable="false"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+                    <Column width="6rem">
+                        <m:Label text="Action" />
+                        <template>
+                            <m:Button
+                                text="Main App"
+                                press="onOpenWebPage"
+                            />
+                        </template>
+                    </Column>
+                </columns>
+            </TreeTable>
+        </m:content>
+    </m:Page>
+</mvc:View>

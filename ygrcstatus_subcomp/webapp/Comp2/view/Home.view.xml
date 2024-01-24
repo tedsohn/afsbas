@@ -1,0 +1,12 @@
+<mvc:View
+	controllerName="ygrcstatus.Comp2.controller.Home"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<MessagePage
+		title="test title"
+		text="Not Found"
+		description="Not Found"
+		showNavButton="true"
+
+		/>
+</mvc:View>

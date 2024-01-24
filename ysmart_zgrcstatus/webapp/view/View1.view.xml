@@ -1,0 +1,48 @@
+
+<mvc:View controllerName="zsmzgrcstatus.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:ut="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true">
+    <Page id="page" title="{i18n>title}"> 
+       <content>
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="ZGRCREQ" persistencyKey="SmartFilter_Explored" enableBasicSearch="false" basicSearchFieldName="Aufnr">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration id="_IDGenControl1" key="Req_Id" index="1" mandatory="auto" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" />
+                    <smartFilterBar:ControlConfiguration id="_IDGenControl2" key="ReqNo" index="2" mandatory="auto" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" />
+                    <smartFilterBar:ControlConfiguration id="_IDGenControl3" key="Duedate" index="3" mandatory="auto" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" />
+                    <smartFilterBar:ControlConfiguration id="_IDGenControl4" key="Funcarea" index="4" mandatory="auto" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false" /> 
+ 
+                </smartFilterBar:controlConfiguration>                
+            </smartFilterBar:SmartFilterBar>
+            <smartTable:SmartTable
+                id="_IDGenSmartTable1"
+                smartFilterId="smartFilterBar"
+                entitySet="ZGRCREQ"
+                tableType="Table"
+                useExportToExcel="true"
+ initiallyVisibleFields="Req_Id,ReqNo,Duedate,SoldToParty,Funcarea" 
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="GRC Status"
+                showRowCount="true"
+                persistencyKey="SmartTableAnalytical_Explored"
+                enableAutoBinding="false"
+                demandPopin="true"
+                class="sapUiResponsiveContentPadding"
+                editTogglable="false"
+                app:useSmartToggle="true"                
+                showFullScreenButton="true"
+            >
+            <smartTable:layoutData>
+                <FlexItemData id="_IDGenFlexItemData1" growFactor="1" baseSize="0%" />
+            </smartTable:layoutData>
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

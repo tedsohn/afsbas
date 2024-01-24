@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="yodata1.controller.main"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:dnd="sap.ui.core.dnd"
+    height="100%"
+>
+    <m:Page
+        showHeader="false"
+        enableScrolling="false"
+    >
+        <m:content>
+            <TreeTable
+                id="TreeTable"
+                rows="{path:'nodeModel>/nodeRoot', 
+                parameters: {arrayNames:['children']}}"
+                selectionMode="MultiToggle"
+                enableSelectAll="false"
+                ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="Clothing"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Collapse all" press="onCollapseAll"/>
+						<m:Button text="Expand first level" press="onExpandFirstLevel"/>
+						<m:Button id="cut" text="Cut" icon="sap-icon://scissors" press="onCut"/>
+						<m:Button id="paste" text="Paste" icon="sap-icon://paste" press="onPaste" enabled="false"/>
+					</m:OverflowToolbar>
+				</extension>
+				<dragDropConfig>
+					<dnd:DragDropInfo
+							sourceAggregation="rows"
+							targetAggregation="rows"
+							dragStart="onDragStart"
+							drop="onDrop"/>
+				</dragDropConfig>                
+                <columns>
+                    <Column width="13rem">
+                        <m:Label text="{i18n>treetitle}" />
+                        <template>
+                            <m:Text text="{nodeModel>text}" />
+                        </template>
+                    </Column>
+                </columns>
+			</TreeTable>
+		</m:content>
+	</m:Page>
+</mvc:View>

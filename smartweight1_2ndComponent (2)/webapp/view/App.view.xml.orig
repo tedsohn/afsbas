@@ -1,0 +1,176 @@
+<mvc:View
+	controllerName="SmartFloor.AssembleWeight.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:layout="sap.ui.layout"
+
+    
+    >
+	<tnt:ToolHeader>
+		<m:Button icon="sap-icon://menu2" type="Transparent">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="NeverOverflow" />
+			</m:layoutData>
+		</m:Button>
+		<m:Text text="Assemble Weight" wrapping="false">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="Disappear" />
+			</m:layoutData>
+		</m:Text>
+		<m:ToolbarSpacer />
+		<m:Button text="" icon="sap-icon://excel-attachment" type="Transparent" press="onExcelPress">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="NeverOverflow" />
+			</m:layoutData>
+		</m:Button> 
+ 		<m:Button text="" icon="sap-icon://pdf-attachment" type="Transparent" press="onPDFPress">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="NeverOverflow" />
+			</m:layoutData>
+		</m:Button>        
+ 
+	</tnt:ToolHeader>
+			<Table
+				id="WeightTable"
+				selectionMode="MultiToggle"
+				rows="{WEIGHT>/WeightCollection}"
+				visibleRowCount="12"
+				showColumnVisibilityMenu="{ui>/showVisibilityMenuEntry}"
+				enableColumnFreeze="{ui>/showFreezeMenuEntry}"
+				enableCellFilter="{ui>/enableCellFilter}"
+				columnSelect="onColumnSelect"
+				cellContextmenu="onProductIdCellContextMenu"
+				ariaLabelledBy="title"
+                >
+				<columns>
+					<Column
+						id="plantId"
+						width="6rem"
+						sortProperty="PLANT"
+						filterProperty="PLANT"
+                        filterType= "sap.ui.model.type.String"
+						showFilterMenuEntry="true"
+						showSortMenuEntry="true"
+                        >
+						<m:Label text="Plant" />
+						<template>
+							<m:Text text="{WEIGHT>PLANT}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="SFCId"
+						filterProperty="SFC"
+						sortProperty="SFC"
+						width="8rem">
+						<m:Label text="SFC" />
+						<template>
+							<m:Text text="{WEIGHT>SFC}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="materialtId"
+						filterProperty="MATERIAL"
+						sortProperty="MATERIAL"
+						width="11rem">
+						<m:Label text="Material" />
+						<template>
+							<m:Text text="{WEIGHT>MATERIAL}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="assetmaterialtId"
+						filterProperty="ASSET_MATERIAL"
+						sortProperty="ASSET_MATERIAL"
+						width="11rem">
+						<m:Label text="Asset Material" />
+						<template>
+							<m:Text text="{WEIGHT>ASSET_MATERIAL}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="startId"
+						width="6rem"
+						hAlign="End"
+						sortProperty="START_WT">
+						<m:Label text="Start WT" />
+						<template>
+							<m:Label text="{
+								path: 'WEIGHT>START_WT'
+							}" />
+						</template>
+					</Column>
+					<Column
+						id="NetId"
+						width="6rem"
+						hAlign="End"
+						sortProperty="NET_WT">
+						<m:Label text="Net WT" />
+						<template>
+							<m:Label text="{
+								path: 'WEIGHT>NET_WT',
+								type: 'sap.ui.model.type.Integer'
+							}" />
+						</template>
+					</Column>
+					<Column
+						id="EndId"
+						width="6rem"
+						hAlign="End"
+						sortProperty="END_WT">
+						<m:Label text="End WT" />
+						<template>
+							<m:Label text="{
+								path: 'WEIGHT>NET_WT',
+								type: 'sap.ui.model.type.Integer'
+							}" />
+						</template>
+					</Column>
+					<Column
+						id="batchId"
+						filterProperty="BATCH"
+						sortProperty="BATCH"
+						width="8rem">
+						<m:Label text="Batch" />
+						<template>
+							<m:Text text="{WEIGHT>BATCH}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="assetbatchId"
+						filterProperty="ASSET_BATCH"
+						sortProperty="ASSET_BATCH"
+						width="8rem">
+						<m:Label text="Asset Batch" />
+						<template>
+							<m:Text text="{WEIGHT>ASSET_BATCH}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="assettypeId"
+						filterProperty="ASSET_TYPE"
+						sortProperty="ASSET_TYPE"
+						width="6rem">
+						<m:Label text="Asset Type" />
+						<template>
+							<m:Text text="{WEIGHT>ASSET_TYPE}" wrapping="false" />
+						</template>
+					</Column>
+
+
+				</columns>
+				<footer>
+					<m:OverflowToolbar id="infobar"></m:OverflowToolbar>
+				</footer>
+			</Table>
+ 
+
+ 
+    
+</mvc:View>

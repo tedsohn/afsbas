@@ -1,0 +1,13 @@
+{
+  "name": "sap-ui-table-sample--tree-table--hierarchy-maintenance-j-s-o-n-tree-binding",
+  "version": "1.0.0",
+  "author": "SAP SE",
+  "description": "Sample: Hierarchy Maintenance with a JSONModel",
+  "scripts": {
+    "start": "ui5 serve",
+    "build": "ui5 build"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3"
+  }
+}

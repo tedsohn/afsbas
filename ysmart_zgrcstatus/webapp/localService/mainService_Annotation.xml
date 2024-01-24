@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zgrcstatus/$metadata">
+        <edmx:Include Namespace="ZGRCSTATUS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zgrcstatus_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zgrcstatus.ZGRCREQType/Req_Id">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQType">
+                <Annotation Term="UI.DataPoint" Qualifier="ApprovalStatus">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ApprovalStatus"/>
+                        <PropertyValue Property="Title" String="Approval Status"/>
+                        <PropertyValue Property="Criticality" Path="Approvalolor"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="CreatedBy">
+                    <Record>
+                        <PropertyValue Property="Value" Path="CreatedBy"/>
+                        <PropertyValue Property="Title" String="Created By"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="CreatedOn">
+                    <Record>
+                        <PropertyValue Property="Value" Path="CreatedOn"/>
+                        <PropertyValue Property="Title" String="Created On"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Duedate">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Duedate"/>
+                        <PropertyValue Property="Title" String="Due Date"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Funcarea">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Funcarea"/>
+                        <PropertyValue Property="Title" String="Functional Area"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="InstanceStatus">
+                    <Record>
+                        <PropertyValue Property="Value" Path="InstanceStatus"/>
+                        <PropertyValue Property="Title" String="Instance Status"/>
+                        <PropertyValue Property="Criticality" Path="Instancelolor"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqId">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqId"/>
+                        <PropertyValue Property="Title" String="Request ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqNo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqNo"/>
+                        <PropertyValue Property="Title" String="Request Number"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Reqtype">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqtypeDescn"/>
+                        <PropertyValue Property="Title" String="Request Type Desc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Stage">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Stage"/>
+                        <PropertyValue Property="Title" String="Stage"/>
+                        <PropertyValue Property="Criticality" Path="GreenColor"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderReqNo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ReqNo"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderCreatedOn"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#CreatedOn"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderCreatedBy"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#CreatedBy"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderInstanceStatus"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#InstanceStatus"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderApprovalStatus"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ApprovalStatus"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderStage"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Stage"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Users in the Request"/>
+                            <PropertyValue Property="ID" String="Users"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_users/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Roles in the Request"/>
+                            <PropertyValue Property="ID" String="Roles"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_roles/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Request Information"/>
+                            <PropertyValue Property="ID" String="RequestTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="GRC Requests"/>
+                        <PropertyValue Property="TypeNamePlural" String="GRC Requests"/>
+                        <PropertyValue Property="TypeImageUrl" String="sap-icon://blank-tag"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataFieldWithUrl">
+                                <PropertyValue Property="Label" String="GRC Requests"/>
+                                <PropertyValue Property="Value" String="">
+                                    <Annotation Term="Core.Messages">
+                                        <Collection>
+                                            <Record>
+                                                <PropertyValue Property="message" String="ERROR: Invalid Path"/>
+                                                <PropertyValue Property="severity" String="error"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                </PropertyValue>
+                                <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReqtypeDescn"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="10rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="Instancelolor"/>
+                            <PropertyValue Property="Value" Path="InstanceStatus"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="Approvalolor"/>
+                            <PropertyValue Property="Value" Path="ApprovalStatus"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="GreenColor"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                            <PropertyValue Property="Value" Path="Stage"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="10rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="IconUrl" String="sap-icon://status-critical"/>
+                            <PropertyValue Property="Value" Path="CreatedOn"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedBy"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="IconUrl" String="sap-icon://error"/>
+                            <PropertyValue Property="Value" Path="Funcarea"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Duedate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="UsersCount"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RolesCount"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="ReqNo"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ReqNo</PropertyPath>
+                        <PropertyPath>Reqtype</PropertyPath>
+                        <PropertyPath>InstanceStatus</PropertyPath>
+                        <PropertyPath>ApprovalStatus</PropertyPath>
+                        <PropertyPath>CreatedOn</PropertyPath>
+                        <PropertyPath>CreatedBy</PropertyPath>
+                        <PropertyPath>Funcarea</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.StatusInfo">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQNOType">
+                <Annotation Term="UI.DataPoint" Qualifier="Duedate">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Duedate"/>
+                        <PropertyValue Property="Title" String="Due Date"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Funcarea">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Funcarea"/>
+                        <PropertyValue Property="Title" String="Functional Area"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqId">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqId"/>
+                        <PropertyValue Property="Title" String="Request ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqNo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqNo"/>
+                        <PropertyValue Property="Title" String="Request Number"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Reqtype">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqtypeDescn"/>
+                        <PropertyValue Property="Title" String="Request Type Desc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.QuickViewFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="GRC Request Number"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Req"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Req">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ReqId"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Funcarea"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ReqtypeDescn"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Duedate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MsmpProcessId"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Top_WI_Id"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                            <PropertyValue Property="message" String="Property 'RequestNumberUrl' of annotation 'UI.IDENTIFICATION$1$' in proj./view 'ZGRCREQNO' not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                            <PropertyValue Property="message" String="Property 'RequestNumberUrl' of annotation 'UI.LINEITEM$1$.CSSDEFAULT' in proj./view 'ZGRCREQNO' not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReqtypeDescn"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="10rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="IconUrl" String="sap-icon://error"/>
+                            <PropertyValue Property="Value" Path="Funcarea"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Duedate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ReqNo</PropertyPath>
+                        <PropertyPath>Funcarea</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.StatusInfo">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                            <PropertyValue Property="message" String="Property 'RequestNumberUrl' of annotation 'UI.STATUSINFO$1$' in proj./view 'ZGRCREQNO' not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQROLEType/ReqId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQROLEType">
+                <Annotation Term="UI.DataPoint" Qualifier="Connector">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Connector"/>
+                        <PropertyValue Property="Title" String="System"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Itemnum">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Itemnum"/>
+                        <PropertyValue Property="Title" String="Item Number"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ProvActionText">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ProvActionText"/>
+                        <PropertyValue Property="Title" String="Role Action"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ProvItemName">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ProvItemName"/>
+                        <PropertyValue Property="Title" String="Role Name"/>
+                        <PropertyValue Property="Criticality" Path="GreenColor"/>
+                        <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ProvItemType">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ProvItemType"/>
+                        <PropertyValue Property="Title" String="Role Type"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqNo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqNo"/>
+                        <PropertyValue Property="Title" String="Request Number"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ValidFrom">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ValidFrom"/>
+                        <PropertyValue Property="Title" String="Valid From"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ValidTo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ValidTo"/>
+                        <PropertyValue Property="Title" String="Valid To"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderReqNo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ReqNo"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderProvItemName"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ProvItemName"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderItemnum"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Itemnum"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderConnector"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Connector"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderProvItemType"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ProvItemType"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderProvAction"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ProvActionText"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderValidFrom"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ValidFrom"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderValidTo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ValidTo"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Role Information"/>
+                            <PropertyValue Property="ID" String="RoleTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="GRC Role"/>
+                        <PropertyValue Property="TypeNamePlural" String="GRC Roles"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="GRC Roles"/>
+                                <PropertyValue Property="Value" Path="ReqId"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Itemnum"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ProvItemName"/>
+                            <PropertyValue Property="Url" Path="RoleUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="16rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Connector"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProvItemType"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProvActionText"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ValidFrom"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ValidTo"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Itemnum"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ReqNo</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.StatusInfo">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQUSERType/ReqId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCREQUSERType">
+                <Annotation Term="UI.DataPoint" Qualifier="Email">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Email"/>
+                        <PropertyValue Property="Title" String="Email"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Fname">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Fname"/>
+                        <PropertyValue Property="Title" String="First Name"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="GreenColor">
+                    <Record>
+                        <PropertyValue Property="Value" Path="GreenColor"/>
+                        <PropertyValue Property="Title" String="GreenColor"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Lname">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Lname"/>
+                        <PropertyValue Property="Title" String="Last Name"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Manager">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Manager"/>
+                        <PropertyValue Property="Title" String="Manager"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReqNo">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReqNo"/>
+                        <PropertyValue Property="Title" String="Request No"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="UserId">
+                    <Record>
+                        <PropertyValue Property="Value" Path="UserId"/>
+                        <PropertyValue Property="Title" String="User ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderReqNo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ReqNo"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderUserid"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UserId"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderFname"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Fname"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderLname"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Lname"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderEmail"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Email"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderManager"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Manager"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="User Information"/>
+                            <PropertyValue Property="ID" String="UserTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="GRC User"/>
+                        <PropertyValue Property="TypeNamePlural" String="GRC Users"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="GRC Users"/>
+                                <PropertyValue Property="Value" Path="ReqId"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="8rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="UserId"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Fname"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Lname"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Email"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Manager"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="UserId"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ReqNo</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.StatusInfo">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="ReqNo"/>
+                            <PropertyValue Property="Url" Path="RequestNumberUrl"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zgrcstatus.ZGRCUSERType">
+                <Annotation Term="UI.QuickViewFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="User Details"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#User"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="User">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="FullName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="EmailAddress"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Department"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PhoneNumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Person"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

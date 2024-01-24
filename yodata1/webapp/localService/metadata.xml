@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_yso_sd" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="YSCType" sap:label="Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35"/>
+            </EntityType>
+            <EntityType Name="YSIType" sap:label="Sales Order Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="SalesOrderItem"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:value-list="standard"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="18"/>
+                <Property Name="OrderQuantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="OrderQuantityUnit"/>
+                <Property Name="OrderQuantityUnit" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <NavigationProperty Name="to_Product" Relationship="cds_yso_sd.assoc_CCE8209D805FF0EB8221B8709276B436" FromRole="FromRole_assoc_CCE8209D805FF0EB8221B8709276B436" ToRole="ToRole_assoc_CCE8209D805FF0EB8221B8709276B436"/>
+                <NavigationProperty Name="to_SalesOrder" Relationship="cds_yso_sd.assoc_BFE382F45922AA765C147FAE9951B016" FromRole="ToRole_assoc_BFE382F45922AA765C147FAE9951B016" ToRole="FromRole_assoc_BFE382F45922AA765C147FAE9951B016"/>
+            </EntityType>
+            <EntityType Name="YSOType" sap:label="Sales Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SalesOrderType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:value-list="standard"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:value-list="standard"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" MaxLength="2"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="DeliveryStatus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DeletionIndicator" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <NavigationProperty Name="to_Customer" Relationship="cds_yso_sd.assoc_F0FDAF25FBC47C0AF995CC25A949EA6A" FromRole="FromRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A" ToRole="ToRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A"/>
+                <NavigationProperty Name="to_Item" Relationship="cds_yso_sd.assoc_BFE382F45922AA765C147FAE9951B016" FromRole="FromRole_assoc_BFE382F45922AA765C147FAE9951B016" ToRole="ToRole_assoc_BFE382F45922AA765C147FAE9951B016"/>
+                <NavigationProperty Name="to_SalesOrg" Relationship="cds_yso_sd.assoc_5B6A43454259CA5AA7FA1D4188F5D5BC" FromRole="FromRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC" ToRole="ToRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC"/>
+            </EntityType>
+            <EntityType Name="YSORGType" sap:label="Sales Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrganization"/>
+                </Key>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="YSPType" sap:label="Product" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Product"/>
+                </Key>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:text="Product_Text"/>
+                <Property Name="Product_Text" Type="Edm.String" MaxLength="40" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ProductType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="11" Scale="2" sap:unit="Currency" sap:variable-scale="true"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <NavigationProperty Name="to_Text" Relationship="cds_yso_sd.assoc_CE11D643DAD9B0FC8A1F54412611D556" FromRole="FromRole_assoc_CE11D643DAD9B0FC8A1F54412611D556" ToRole="ToRole_assoc_CE11D643DAD9B0FC8A1F54412611D556"/>
+            </EntityType>
+            <EntityType Name="YSPTType" sap:label="Product Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="Product"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:text="ProductName"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="40"/>
+                <NavigationProperty Name="to_Product" Relationship="cds_yso_sd.assoc_D1936B4F98873398E81AC2B4A26EA646" FromRole="FromRole_assoc_D1936B4F98873398E81AC2B4A26EA646" ToRole="ToRole_assoc_D1936B4F98873398E81AC2B4A26EA646"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO Code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Measurement Unit Txt"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+            </EntityType>
+            <EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <NavigationProperty Name="Format" Relationship="cds_yso_sd.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_yso_sd.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_yso_sd.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_yso_sd.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+            </EntityType>
+            <EntityType Name="SAP__Format" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__TableColumns" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                    <PropertyRef Name="Header"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__CoverPage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Title"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="assoc_F0FDAF25FBC47C0AF995CC25A949EA6A" sap:content-version="1">
+                <End Type="cds_yso_sd.YSOType" Multiplicity="1" Role="FromRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A"/>
+                <End Type="cds_yso_sd.YSCType" Multiplicity="0..1" Role="ToRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A"/>
+            </Association>
+            <Association Name="assoc_BFE382F45922AA765C147FAE9951B016" sap:content-version="1">
+                <End Type="cds_yso_sd.YSOType" Multiplicity="1" Role="FromRole_assoc_BFE382F45922AA765C147FAE9951B016">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_yso_sd.YSIType" Multiplicity="*" Role="ToRole_assoc_BFE382F45922AA765C147FAE9951B016"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_BFE382F45922AA765C147FAE9951B016">
+                        <PropertyRef Name="SalesOrder"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_BFE382F45922AA765C147FAE9951B016">
+                        <PropertyRef Name="SalesOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_5B6A43454259CA5AA7FA1D4188F5D5BC" sap:content-version="1">
+                <End Type="cds_yso_sd.YSOType" Multiplicity="1" Role="FromRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC"/>
+                <End Type="cds_yso_sd.YSORGType" Multiplicity="0..1" Role="ToRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC">
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC">
+                        <PropertyRef Name="SalesOrganization"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_CCE8209D805FF0EB8221B8709276B436" sap:content-version="1">
+                <End Type="cds_yso_sd.YSIType" Multiplicity="1" Role="FromRole_assoc_CCE8209D805FF0EB8221B8709276B436"/>
+                <End Type="cds_yso_sd.YSPType" Multiplicity="0..1" Role="ToRole_assoc_CCE8209D805FF0EB8221B8709276B436"/>
+            </Association>
+            <Association Name="assoc_D1936B4F98873398E81AC2B4A26EA646" sap:content-version="1">
+                <End Type="cds_yso_sd.YSPTType" Multiplicity="1" Role="FromRole_assoc_D1936B4F98873398E81AC2B4A26EA646"/>
+                <End Type="cds_yso_sd.YSPType" Multiplicity="1" Role="ToRole_assoc_D1936B4F98873398E81AC2B4A26EA646"/>
+            </Association>
+            <Association Name="to_format" sap:content-version="1">
+                <End Type="cds_yso_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_yso_sd.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_tablecolumns" sap:content-version="1">
+                <End Type="cds_yso_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_yso_sd.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_coverpage" sap:content-version="1">
+                <End Type="cds_yso_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_yso_sd.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_signature" sap:content-version="1">
+                <End Type="cds_yso_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_yso_sd.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_CE11D643DAD9B0FC8A1F54412611D556" sap:content-version="1">
+                <End Type="cds_yso_sd.YSPType" Multiplicity="1" Role="FromRole_assoc_CE11D643DAD9B0FC8A1F54412611D556"/>
+                <End Type="cds_yso_sd.YSPTType" Multiplicity="*" Role="ToRole_assoc_CE11D643DAD9B0FC8A1F54412611D556"/>
+            </Association>
+            <EntityContainer Name="cds_yso_sd_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_yso_sd.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_yso_sd.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_yso_sd.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_yso_sd.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_yso_sd.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_yso_sd.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_yso_sd.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YSC" EntityType="cds_yso_sd.YSCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YSI" EntityType="cds_yso_sd.YSIType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YSO" EntityType="cds_yso_sd.YSOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YSORG" EntityType="cds_yso_sd.YSORGType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YSP" EntityType="cds_yso_sd.YSPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YSPT" EntityType="cds_yso_sd.YSPTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_D1936B4F98873398E81AC2B4A26EA646" Association="cds_yso_sd.assoc_D1936B4F98873398E81AC2B4A26EA646" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSPT" Role="FromRole_assoc_D1936B4F98873398E81AC2B4A26EA646"/>
+                    <End EntitySet="YSP" Role="ToRole_assoc_D1936B4F98873398E81AC2B4A26EA646"/>
+                </AssociationSet>
+                <AssociationSet Name="to_formatSet" Association="cds_yso_sd.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
+                    <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F0FDAF25FBC47C0AF995CC25A949EA6A" Association="cds_yso_sd.assoc_F0FDAF25FBC47C0AF995CC25A949EA6A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSO" Role="FromRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A"/>
+                    <End EntitySet="YSC" Role="ToRole_assoc_F0FDAF25FBC47C0AF995CC25A949EA6A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CCE8209D805FF0EB8221B8709276B436" Association="cds_yso_sd.assoc_CCE8209D805FF0EB8221B8709276B436" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSI" Role="FromRole_assoc_CCE8209D805FF0EB8221B8709276B436"/>
+                    <End EntitySet="YSP" Role="ToRole_assoc_CCE8209D805FF0EB8221B8709276B436"/>
+                </AssociationSet>
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_yso_sd.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
+                    <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BFE382F45922AA765C147FAE9951B016" Association="cds_yso_sd.assoc_BFE382F45922AA765C147FAE9951B016" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSO" Role="FromRole_assoc_BFE382F45922AA765C147FAE9951B016"/>
+                    <End EntitySet="YSI" Role="ToRole_assoc_BFE382F45922AA765C147FAE9951B016"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5B6A43454259CA5AA7FA1D4188F5D5BC" Association="cds_yso_sd.assoc_5B6A43454259CA5AA7FA1D4188F5D5BC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSO" Role="FromRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC"/>
+                    <End EntitySet="YSORG" Role="ToRole_assoc_5B6A43454259CA5AA7FA1D4188F5D5BC"/>
+                </AssociationSet>
+                <AssociationSet Name="to_signatureSet" Association="cds_yso_sd.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
+                    <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
+                </AssociationSet>
+                <AssociationSet Name="to_coverpageSet" Association="cds_yso_sd.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
+                    <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CE11D643DAD9B0FC8A1F54412611D556" Association="cds_yso_sd.assoc_CE11D643DAD9B0FC8A1F54412611D556" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YSP" Role="FromRole_assoc_CE11D643DAD9B0FC8A1F54412611D556"/>
+                    <End EntitySet="YSPT" Role="ToRole_assoc_CE11D643DAD9B0FC8A1F54412611D556"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.YSOType/to_Item" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.YSPType/to_Text" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities/YSI" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Product"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SalesOrder"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities/YSO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Customer"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SalesOrg"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities/YSP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities/YSPT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Product"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.cds_yso_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_yso_sd.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/sap/YSO_SBV2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com/sap/opu/odata/sap/YSO_SBV2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog id="_IDGenViewSettingsDialog1"
+		confirm="handleSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem id="_IDGenViewSettingsItem1" text="Plant" key="PLANT" selected="true" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem2" text="SFC" key="SFC" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem3" text="Material" key="MATERIAL" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem4" text="Asset Material" key="ASSET_MATERIAL" />
+
+            <ViewSettingsItem id="_IDGenViewSettingsItem5" text="Start WT" key="START_WT" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem6" text="Net WT" key="NET_WT" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem7" text="End WT" key="END_WT" />
+
+			<ViewSettingsItem id="_IDGenViewSettingsItem8" text="Batch" key="BATCH" />
+            <ViewSettingsItem id="_IDGenViewSettingsItem9" text="Asset Batch" key="ASSET_BATCH" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem10" text="Asset Type" key="ASSET_TYPE" />
+
+            <ViewSettingsItem id="_IDGenViewSettingsItem11" text="Updated By" key="UPDATE_BY" />
+			<ViewSettingsItem id="_IDGenViewSettingsItem12" text="Updated" key="UPDATE_DATE" />
+
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

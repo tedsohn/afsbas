@@ -1,0 +1,39 @@
+specVersion: "3.1"
+metadata:
+  name: yodata1
+type: application
+framework:
+  name: SAPUI5
+  version: 1.99.3
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.f
+    - name: sap.suite.ui.generic.template
+    - name: sap.ui.comp
+    - name: sap.ui.generic.app
+    - name: sap.ui.table
+    - name: sap.ushell
+    - name: themelib_sap_bluecrystal
+    - name: themelib_sap_fiori_3
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: https://45f514af-f57b-4579-990b-8b70ea328491.abap.us10.hana.ondemand.com
+            destination: TEDTRIAL
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: yodata1
+        ui5Theme: sap_fiori_3

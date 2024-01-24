@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zcmrc2
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-default_abap-trial-0a11883atrial-dev
+          url: https://089b04d5-c34c-49d4-80b9-96228076931c.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZCMRC2_0104
+          description: ZCMRC2_0104
+          package: YABC
+          transport: TRLK907784
+        exclude:
+          - /test/

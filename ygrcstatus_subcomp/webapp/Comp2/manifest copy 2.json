@@ -1,0 +1,149 @@
+{
+    "_version": "1.37.0",
+    "sap.app": {
+        "id": "ygrcstatus.Comp2",
+        "type": "component",
+        "embeddedBy": "../",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGRCSTATUS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZGRCSTATUS_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZGRCSTATUS_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGRCSTATUS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZGRCSTATUS_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+    
+        "dependencies": {
+            "minUI5Version": "1.96.23",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            },
+            "components": {}
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+
+
+
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ygrcstatus.Comp2.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "ygrcstatus.Comp2.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": true
+            },
+            "routes": [
+                {
+                    "name": "App",
+                    "pattern": "",
+                    "target": [
+                        "App"
+                    ]
+                }
+            ],
+            "targets": {
+                "App": {
+                    "viewName": "Detail"
+                }
+            }
+        },
+         "rootView": {
+            "viewName": "ygrcstatus.Comp2.view.Detail",
+            "type": "XML",
+            "async": true,
+            "id": "Detail"
+        }
+    },
+
+
+ 
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

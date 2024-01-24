@@ -1,0 +1,25 @@
+{"folders":[
+        {
+            "path": "sap.ui.core.tutorial.databinding.01"
+        },
+        {
+            "name": "sap.ui.comp.tutorial.smartControls.01",
+            "path": "sap.ui.comp.tutorial.smartControls.01"
+        },
+        {
+            "name": "sap.ui.comp.tutorial.smartControls.04",
+            "path": "sap.ui.comp.tutorial.smartControls.04"
+        },
+        {
+            "name": "blank",
+            "path": "blank"
+        },
+        {
+            "name": "sap.ui.core.tutorial.databinding.15",
+            "path": "sap.ui.core.tutorial.databinding.15"
+        },
+        {
+            "name": "sap.m.tutorial.walkthrough.25",
+            "path": "sap.m.tutorial.walkthrough.25"
+        }
+    ],"settings":{}}

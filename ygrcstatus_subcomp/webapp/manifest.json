@@ -1,0 +1,345 @@
+{
+    "_version": "1.37.0",
+    "sap.app": {
+        "id": "ygrcstatus",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.11.0",
+            "toolsId": "c3410818-f55d-40e7-84ef-bcc68d4a870a"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGRCSTATUS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZGRCSTATUS_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZGRCSTATUS_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGRCSTATUS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZGRCSTATUS_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.96.23",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "componentUsages": {
+            "myCanvasComponent": {
+                "name": "ygrcstatus.Comp2",
+                "settings": {},
+                "componentData": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ygrcstatus.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [
+                {}
+            ],
+            "targets": {}
+        },
+        "rootView": {
+            "viewName": "sap.suite.ui.generic.template.ListReport.view.ListReport",
+            "type": "XML",
+            "async": true,
+            "id": "ListReport"
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "controllerName": "ygrcstatus.ext.controller.ObjectPageExt",
+                        "sap.ui.generic.app": {
+                            "ZGRCREQ": {
+                                "EntitySet": "ZGRCREQ",
+                                "Header": {
+                                    "Actions": {
+                                        "openGRCRequestActionID": {
+                                            "id": "openGRCRequestActionIDButton",
+                                            "text": "Open GRC Request",
+                                            "press": "openGRCRequest",
+                                            "requiresSelection": false
+                                        }
+                                    }
+                                }
+                            },
+                            "ZGRCREQUSER": {
+                                "EntitySet": "ZGRCREQ",
+                                "Sections": {
+                                    "Users": {
+                                        "id": "Users",
+                                        "Actions": {
+                                            "openGRCRequestActionID": {
+                                                "id": "createUserActionIDButton",
+                                                "text": "Create",
+                                                "press": "createUser",
+                                                "requiresSelection": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "ZGRCREQROLE": {
+                                "EntitySet": "ZGRCREQ",
+                                "Sections": {
+                                    "Users": {
+                                        "id": "Roles",
+                                        "Actions": {
+                                            "openGRCRequestActionID": {
+                                                "id": "createRoleActionIDButton",
+                                                "text": "Create",
+                                                "press": "createRole",
+                                                "requiresSelection": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "ygrcstatus.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "ZGRCREQ": {
+                                "EntitySet": "ZGRCREQ",
+                                "Actions": {
+                                    "createRequestAction": {
+                                        "id": "createRequestActionButton",
+                                        "text": "Create",
+                                        "press": "navToComp2",
+                                        "requiresSelection": false
+                                    }
+                                }
+                            },
+                            "ZGRCREQUSER": {
+                                "EntitySet": "ZGRCREQUSER",
+                                "Actions": {
+                                    "testAction": {
+                                        "id": "testActionButton",
+                                        "text": "Create Users",
+                                        "press": "test",
+                                        "requiresSelection": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "ListReport|ZGRCREQ": {
+                "entitySet": "ZGRCREQ",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "smartVariantManagement": true,
+                        "enableTableFilterInPageVariant": true,
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        },
+
+                        "multiSelect": true,
+                        "tableSettings": {
+                            "createWithParameterDialog" : {
+                                "fields" : {
+                                    "Funcarea":{"path": "Funcarea"},
+                                    "CurrencyCode" : {"path":"ReqId"},
+                                    "BillingStatus" : {"path":"Reqtype"},
+                                    "InstanceStatus" : {"path":"InstanceStatus"}
+                                }
+                            }
+                        }
+
+
+
+
+
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ZGRCREQ": {
+                        "entitySet": "ZGRCREQ",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        },
+                        "pages": {
+                            "ObjectPage|to_users": {
+                                "navigationProperty": "to_users",
+                                "entitySet": "ZGRCREQUSER",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            },
+                            "ObjectPage|to_roles": {
+                                "navigationProperty": "to_roles",
+                                "entitySet": "ZGRCREQROLE",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            },
+                            "myCanvasPage": {
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.Canvas",
+                                    "settings": {
+                                        "requiredControls": {
+                                            "footerBar": true
+                                        }
+                                    }
+                                },
+                                "implementingComponent": {
+                                    "componentUsage": "myCanvasComponent",
+                                    "settings": {}
+                                },
+                                "routingSpec": {
+                                    "noOData": true,
+                                    "noKey": true,
+                                    "routeName": "toUserCreatePage"
+                                }
+                            },
+                            "roleCreatePage": {
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.Canvas",
+                                    "settings": {
+                                        "requiredControls": {
+                                            "footerBar": true
+                                        }
+                                    }
+                                },
+                                "implementingComponent": {
+                                    "componentUsage": "myCanvasComponent",
+                                    "settings": {}
+                                },
+                                "routingSpec": {
+                                    "noOData": true,
+                                    "noKey": true,
+                                    "routeName": "toRoleCreatePage"
+                                }
+                            }
+                        }
+                    },
+                    "myCanvasPage": {
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.Canvas",
+                            "settings": {
+                                "requiredControls": {
+                                    "footerBar": true
+                                }
+                            }
+                        },
+                        "implementingComponent": {
+                            "componentUsage": "myCanvasComponent",
+                            "settings": {}
+                        },
+                        "routingSpec": {
+                            "noOData": true,
+                            "noKey": true,
+                            "routeName": "toRequestCreatePage"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

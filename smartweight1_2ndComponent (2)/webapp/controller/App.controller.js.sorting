@@ -1,0 +1,456 @@
+sap.ui.define([
+    "sap/base/Log",
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/unified/Menu",
+    "sap/ui/unified/MenuItem",
+    "sap/m/MessageToast",
+    "sap/ui/core/format/DateFormat",
+    "sap/ui/core/Popup",
+    "sap/m/Menu",
+    "sap/m/MenuItem",
+    "sap/m/ToolbarSpacer",
+    "sap/ui/thirdparty/jquery",
+    "sap/ui/Device",
+    "SmartFloor/AssembleWeight/controller/TableUtility",
+    "sap/ui/export/library",
+    "sap/ui/export/Spreadsheet",
+    'sap/m/Label',
+    'sap/ui/model/Filter',
+    'sap/ui/model/FilterOperator',
+    'sap/ui/model/Sorter'
+
+], function (Log, Controller, JSONModel, Menu, MenuItem, MessageToast,
+    DateFormat, Popup, MenuM, MenuItemM, ToolbarSpacer, jQuery, Device,
+    TableUtility, exportLibrary, Spreadsheet, Label, Filter, FilterOperator, Sorter) {
+    "use strict";
+
+    var that = "";
+    var EdmType = exportLibrary.EdmType;
+
+
+    return Controller.extend("SmartFloor.AssembleWeight.controller.App", {
+
+        _oResponsivePopover: null,
+        onInit: function () {
+
+            this.getView().addEventDelegate({
+                onBeforeFirstShow: function () {
+                    console.log("on before show!");
+                }
+            });
+
+            that = this;
+            that.oWeightModel = new JSONModel();
+            this.getView().setModel(that.oWeightModel, "WEIGHT");
+
+            //column sort & filter
+            if (!this._oResponsivePopover) {
+                this._oResponsivePopover = sap.ui.xmlfragment("SmartFloor.AssembleWeight.view.Popover", this);
+                this._oResponsivePopover.setModel(this.getView().getModel("WEIGHT"));
+            }
+            var oTable = this.getView().byId("idProductsTable");
+            oTable.addEventDelegate({
+                onAfterRendering: function () {
+                    var oHeader = this.$().find('.sapMListTblHeaderCell'); //Get hold of table header elements
+                    for (var i = 0; i < oHeader.length; i++) {
+                        var oID = oHeader[i].id;
+                        that.onClick(oID);
+                    }
+                }
+            }, oTable);
+
+
+
+            if (1 == 1) {
+                that.oWeightModel.loadData("./model/AssembleWeight.json");
+            } else {
+                that.fnGetWeight();
+            }
+
+            ///////////////////////////////////////////////////
+            this.aKeys = [
+                "PLANT", "SFC", "MATERIAL"
+            ];
+            this.oSelectName = this.getSelect("selPlant");
+            this.oSelectCategory = this.getSelect("selSFC");
+            this.oSelectSupplierName = this.getSelect("selMaterial");
+            this.oWeightModel.setProperty("/Filter/text", "Filtered by None");
+            this.addSnappedLabel();
+            ///////////////////////////////////////////////////
+
+
+            that.oWeightModel.attachRequestCompleted(function () {
+                console.log(that.oWeightModel.getData());
+                that.oWeightModel.getProperty("/WeightCollection/0/");
+                that.oWeightModel.getProperty("/WeightCollection/0/SFC");
+                ///////////////////////////////////////////////////
+                that.oPlantModel = new JSONModel();
+                that.getView().setModel(that.oPlantModel, "PLANT");
+                that.oSFCModel = new JSONModel();
+                that.getView().setModel(that.oSFCModel, "SFC");
+                that.oMaterialModel = new JSONModel();
+                that.getView().setModel(that.oMaterialModel, "MATERIAL");
+
+                var collectionArray = that.oWeightModel.getProperty("/WeightCollection");
+                var plants = [], SFCs = [], materials = [];
+                var uniquePlants = [], uniqueSFCs = [], uniqueMaterials = [];
+                for (var i = 0; i < collectionArray.length; i++) {
+                    plants.push(collectionArray[i].PLANT);
+                    SFCs.push(collectionArray[i].SFC);
+                    materials.push(collectionArray[i].MATERIAL);
+                }
+                const unique = (value, index, self) => {
+                    return self.indexOf(value) === index
+                }
+                const uPlants = plants.filter(unique);
+                const uSFCs = SFCs.filter(unique);
+                const uMaterials = materials.filter(unique);
+                uniquePlants.push({ key: '', value: '' });
+                uniqueSFCs.push({ key: '', value: '' });
+                uniqueMaterials.push({ key: '', value: '' });
+                for (var i = 0; i < uPlants.length; i++) {
+                    uniquePlants.push({
+                        key: uPlants[i],
+                        value: uPlants[i]
+                    });
+                }
+                for (var i = 0; i < uSFCs.length; i++) {
+                    uniqueSFCs.push({
+                        key: uSFCs[i],
+                        value: uSFCs[i]
+                    });
+                }
+                for (var i = 0; i < uMaterials.length; i++) {
+                    uniqueMaterials.push({
+                        key: uMaterials[i],
+                        value: uMaterials[i]
+                    });
+                }
+                that.oPlantModel.setData(uniquePlants);
+                that.oSFCModel.setData(uniqueSFCs);
+                that.oMaterialModel.setData(uniqueMaterials);
+                var oFB = that.getView().byId("filterbar");
+                if (oFB) {
+                    oFB.variantsInitialized();
+                }
+                ///////////////////////////////////////////////////
+            });
+
+            var oGroupingModel = new JSONModel({ hasGrouping: false });
+            this.getView().setModel(oGroupingModel, "Grouping");
+
+            this.getView().setModel(new JSONModel({
+                showVisibilityMenuEntry: false,
+                showFreezeMenuEntry: false,
+                enableCellFilter: false
+            }), "ui");
+
+            // init and activate controller
+
+        },
+        onClick: function (oID) {
+            var that = this;
+            $('#' + oID).click(function (oEvent) { //Attach Table Header Element Event
+                var oTarget = oEvent.currentTarget; //Get hold of Header Element
+                var oLabelText = oTarget.childNodes[0].textContent; //Get Column Header text
+                var oIndex = oTarget.id.slice(-1); //Get the column Index
+                var oView = that.getView();
+                var oTable = oView.byId("idProductsTable");
+                var oModel = oTable.getModel("WEIGHT").getProperty("/WeightCollection"); //Get Hold of Table Model Values
+                var oKeys = Object.keys(oModel[0]); //Get Hold of Model Keys to filter the value
+                oView.getModel("WEIGHT").setProperty("/bindingValue", oKeys[oIndex]); //Save the key value to property
+                that._oResponsivePopover.openBy(oTarget);
+            });
+        },
+        onChange: function (oEvent) {
+            var oValue = oEvent.getParameter("value");
+            var oMultipleValues = oValue.split(",");
+            var oTable = this.getView().byId("idProductsTable");
+            var oBindingPath = this.getView().getModel("WEIGHT").getProperty("/bindingValue"); //Get Hold of Model Key value that was saved
+            var aFilters = [];
+            for (var i = 0; i < oMultipleValues.length; i++) {
+                var oFilter = new Filter(oBindingPath, "Contains", oMultipleValues[i]);
+                aFilters.push(oFilter)
+            }
+            var oItems = oTable.getBinding("items");
+            oItems.filter(aFilters, "Application");
+            this._oResponsivePopover.close();
+        },
+
+        onAscending: function () {
+            var oTable = this.getView().byId("idProductsTable");
+            var oItems = oTable.getBinding("items");
+            var oBindingPath = this.getView().getModel("WEIGHT").getProperty("/bindingValue");
+            var oSorter = new Sorter(oBindingPath);
+            oItems.sort(oSorter);
+            this._oResponsivePopover.close();
+        },
+
+        onDescending: function () {
+            var oTable = this.getView().byId("idProductsTable");
+            var oItems = oTable.getBinding("items");
+            var oBindingPath = this.getView().getModel("WEIGHT").getProperty("/bindingValue");
+            var oSorter = new Sorter(oBindingPath, true);
+            oItems.sort(oSorter);
+            this._oResponsivePopover.close();
+        },
+
+        onOpen: function (oEvent) {
+            //On Popover open focus on Input control
+            var oPopover = sap.ui.getCore().byId(oEvent.getParameter("id"));
+            var oPopoverContent = oPopover.getContent()[0];
+            var oCustomListItem = oPopoverContent.getItems()[2];
+            var oCustomContent = oCustomListItem.getContent()[0];
+            var oInput = oCustomContent.getItems()[1];
+            oInput.focus();
+            oInput.$().find('.sapMInputBaseInner')[0].select();
+        }, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        onSearch: function () {
+            this.onSelectChange();
+        },
+
+        fnGetWeight: function () {
+            var url = "/XMII/Illuminator?QueryTemplate=MyContent_tsohn/Assemble/getAssembleWT" + "&Content-Type=text/json";
+            $.ajax({
+                type: "POST",
+                url: url,
+                success: function (data) {
+                    // jQuery.sap.delayedCall(100, that, function () {
+                    //     oGlobalBusyDialog.close();
+                    // });
+                    var row = data.Rowsets.Rowset[0].Row;
+                    var WeightData;
+
+                    if (row) {
+                        WeightData = {
+                            WeightCollection: []
+                        };
+                        WeightData.WeightCollection = row;
+                    } else {
+                        WeightData = {
+                            Weight: []
+                        };
+                    }
+                    that.oWeightModel.setData(WeightData);
+
+                    console.log(that.oWeightModel.getData());
+                    console.log(that.oWeightModel.getProperty("/WeightCollection/0/"));
+                    console.log(that.oWeightModel.getProperty("/WeightCollection/0/SFC"));
+
+                },
+                error: function (err) {
+
+                }
+            }); //ajax close
+        },
+
+        onExcelPress: function () {
+            var aCols, aWeightData, oSettings, oSheet, oRowBinding, oTable;
+
+            aCols = this.createColumnConfig();
+            aWeightData = this.getView().getModel("WEIGHT").getProperty('/WeightCollection');
+
+            oSettings = {
+                workbook: { columns: aCols },
+                dataSource: aWeightData,
+                fileName: 'Assembly Weight.xlsx',
+            };
+
+            oSheet = new Spreadsheet(oSettings);
+            oSheet.build().then(function () {
+                //                    MessageToast.show('Spreadsheet export has finished');
+            })
+                .finally(oSheet.destroy);
+
+        },
+
+        createColumnConfig: function () {
+            var aCols = [];
+
+
+            aCols.push({
+                label: 'Plant',
+                property: ['PLANT'],
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'SFC',
+                property: 'SFC',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'Material',
+                property: 'MATERIAL',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'Asset Material',
+                property: 'ASSET_MATERIAL',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'Start WT',
+                property: 'START_WT',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'Net WT',
+                property: 'NET_WT',
+                type: EdmType.Number
+            });
+            aCols.push({
+                label: 'End WT',
+                property: 'END_WT',
+                type: EdmType.Number
+            });
+            aCols.push({
+                label: 'Batch',
+                property: 'BATCH',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'ASSET_BATCH',
+                property: 'ASSET_BATCH',
+                type: EdmType.String
+            });
+            aCols.push({
+                label: 'Asset Batch',
+                property: 'ASSET_TYPE',
+                type: EdmType.String,
+            });
+
+            return aCols;
+        },
+
+        onPDFPress: function () {
+            var aWegihtData,
+                aWegihtData = this.getView().getModel("WEIGHT").getProperty('/WeightCollection');
+
+            var columns = ["Plant", "SFC", "Material", "AssetMaterial", "Start WT", "Net WT", "End WT", "Batch", "Asset Batch", "Asset Type"];
+            var data = [];
+            for (var i = 0; i < aWegihtData.length; i++) {
+                data[i] = [aWegihtData[i].PLANT,
+                aWegihtData[i].SFC,
+                aWegihtData[i].MATERIAL,
+                aWegihtData[i].ASSET_MATERIAL,
+                aWegihtData[i].START_WT,
+                aWegihtData[i].NET_WT,
+                aWegihtData[i].END_WT,
+                aWegihtData[i].BATCH,
+                aWegihtData[i].ASSET_BATCH,
+                aWegihtData[i].ASSET_TYPE];
+            }
+
+            var pdfdoc = new jsPDF("p", "pt");
+            pdfdoc.autoTable(columns, data);
+            MessageToast.show('PDF being exported');
+            pdfdoc.save("Assembly Weight.pdf");
+        },
+
+
+        onSelectChange: function () {
+            var aCurrentFilterValues = [];
+
+            aCurrentFilterValues.push(this.getSelectedItemText(this.oSelectName));
+            aCurrentFilterValues.push(this.getSelectedItemText(this.oSelectCategory));
+            aCurrentFilterValues.push(this.getSelectedItemText(this.oSelectSupplierName));
+
+            this.filterTable(aCurrentFilterValues);
+        },
+
+        filterTable: function (aCurrentFilterValues) {
+            this.getTableItems().filter(this.getFilters(aCurrentFilterValues));
+            this.updateFilterCriterias(this.getFilterCriteria(aCurrentFilterValues));
+        },
+
+        updateFilterCriterias: function (aFilterCriterias) {
+            this.removeSnappedLabel(); /* because in case of label with an empty text, */
+            this.addSnappedLabel(); /* a space for the snapped content will be allocated and can lead to title misalignment */
+            this.oWeightModel.setProperty("/Filter/text", this.getFormattedSummaryText(aFilterCriterias));
+        },
+
+        addSnappedLabel: function () {
+            var oSnappedLabel = this.getSnappedLabel();
+            oSnappedLabel.attachBrowserEvent("click", this.onToggleHeader, this);
+            this.getPageTitle().addSnappedContent(oSnappedLabel);
+        },
+
+        removeSnappedLabel: function () {
+            this.getPageTitle().destroySnappedContent();
+        },
+
+        getFilters: function (aCurrentFilterValues) {
+            this.aFilters = [];
+
+            this.aFilters = this.aKeys.map(function (sCriteria, i) {
+                return new Filter(sCriteria, FilterOperator.Contains, aCurrentFilterValues[i]);
+            });
+
+            return this.aFilters;
+        },
+        getFilterCriteria: function (aCurrentFilterValues) {
+            return this.aKeys.filter(function (el, i) {
+                if (aCurrentFilterValues[i] !== "") {
+                    return el;
+                }
+            });
+        },
+        getFormattedSummaryText: function (aFilterCriterias) {
+            if (aFilterCriterias.length > 0) {
+                return "Filtered By (" + aFilterCriterias.length + "): " + aFilterCriterias.join(", ");
+            } else {
+                return "Filtered by None";
+            }
+        },
+
+        getTable: function () {
+            return this.getView().byId("idProductsTable");
+        },
+        getTableItems: function () {
+            return this.getTable().getBinding("items");
+        },
+        getSelect: function (sId) {
+            return this.getView().byId(sId);
+        },
+        getSelectedItemText: function (oSelect) {
+            return oSelect.getSelectedItem() ? oSelect.getSelectedItem().getKey() : "";
+        },
+        getPage: function () {
+            return this.getView().byId("dynamicPageId");
+        },
+        getPageTitle: function () {
+            return this.getPage().getTitle();
+        },
+        getSnappedLabel: function () {
+            return new Label({
+                text: "{/Filter/text}"
+            });
+        },
+
+    });
+
+});

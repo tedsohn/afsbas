@@ -1,0 +1,188 @@
+<mvc:View controllerName="SmartFloor.AssembleWeight.controller.Main"
+		height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:vm="sap.ui.comp.variants"
+        xmlns:tnt="sap.tnt"
+        >
+
+		<f:DynamicPage id="dynamicPageId" headerExpanded="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<vm:VariantManagement standardItemText="Assembly Weight">
+						</vm:VariantManagement>
+					</f:heading>
+					<f:actions>
+						<ToolbarSpacer/>
+						<Button
+							tooltip="Sort"
+							icon="sap-icon://sort"
+							press="onSortPressed"/>
+                        <Button text="" icon="sap-icon://excel-attachment" type="Transparent" press="onExcelPress">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" />
+                            </layoutData>
+                        </Button>                    
+					</f:actions>                 
+				</f:DynamicPageTitle>
+			</f:title> 
+
+			<!-- DynamicPage Header -->           
+			<f:header>           
+				<f:DynamicPageHeader pinnable="true">
+					<f:content>                    
+						<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="false">
+							<fb:filterItems>
+								<fb:FilterItem name="A" label="Plant">
+									<fb:control>
+										<Select
+										id="selPlant"
+                                        width="5rem"
+										forceSelection="true"
+										change="onSelectChange"
+										items="{
+                                                    path: 'PLANT>/'
+                                                }">
+										<core:Item key="{PLANT>key}" text="{PLANT>value}"/>
+										</Select>
+									</fb:control>				
+								</fb:FilterItem>								
+								<fb:FilterItem name="B" label="SFC">
+									<fb:control>
+										<Select
+										id="selSFC"
+										change="onSelectChange"
+										forceSelection="true"
+										items="{
+                                                    path: 'SFC>/'
+                                                 }">
+										<core:Item key="{SFC>key}" text="{SFC>value}"/>
+										</Select>
+									</fb:control>				
+								</fb:FilterItem>				
+								<fb:FilterItem name="C" label="Material">
+									<fb:control>
+										<Select
+										id="selMaterial"
+										change="onSelectChange"
+										forceSelection="true"
+										items="{
+                                                    path: 'MATERIAL>/'
+                                                }">
+										<core:Item key="{MATERIAL>key}" text="{MATERIAL>value}"/>
+										</Select>
+									</fb:control>				
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<!-- DynamicPage Content -->
+			<f:content>                          
+				<Table  id="idWeightTable"
+                        sticky="ColumnHeaders,HeaderToolbar"	
+						inset="false"
+						items="{path: 'WEIGHT>/WeightCollection',
+                                sorter: [{path: 'PLANT', descending: false}, 
+                                         {path: 'SFC', descending: false} ]
+                        }"                     
+                >
+					<columns>
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Plant"/>
+						</Column>
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="SFC"/>
+						</Column>
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Material"/>
+						</Column>
+ 						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Asset Material"/>
+						</Column>
+						<Column	minScreenWidth="Tablet"	hAlign="End">
+							<Text text="Start WT"/>
+						</Column>                        
+						<Column	minScreenWidth="Tablet"	demandPopin="true" hAlign="End">
+							<Text text="Net WT"/>
+						</Column>
+						<Column	minScreenWidth="Tablet"	demandPopin="true" hAlign="End">
+							<Text text="End WT"/>
+						</Column>
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Batch"/>
+						</Column>   
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Asset Batch"/>
+						</Column>    
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Asset Type"/>
+						</Column>   
+						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Updated By"/>
+						</Column>  
+ 						<Column	minScreenWidth="Desktop" demandPopin="true">
+							<Text text="Updated"/>
+						</Column>                                                 
+					</columns>
+					<items>
+						<ColumnListItem	vAlign="Middle">
+							<cells>
+								<ObjectIdentifier
+										title="{WEIGHT>PLANT}" 
+										/>
+								<Text text="{WEIGHT>SFC}"/>
+								<Text text="{WEIGHT>MATERIAL}"/>
+								<Text text="{WEIGHT>ASSET_MATERIAL}"/>   
+                                <ObjectNumber
+                                    number="{WEIGHT>START_WT}"
+                                    unit="{WEIGHT>UOM}"
+                                    state="{
+                                        parts: [
+                                            {path: 'WEIGHT>START_WT'},
+                                            {path: 'WEIGHT>UOM'}
+                                        ],
+                                        formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                  }" />       
+                                <ObjectNumber
+                                    number="{WEIGHT>NET_WT}"
+                                    unit="{WEIGHT>UOM}"
+                                    state="{
+                                        parts: [
+                                            {path: 'WEIGHT>NET_WT'},
+                                            {path: 'WEIGHT>UOM'}
+                                        ],
+                                        formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                    }" />                                         
+                                <ObjectNumber
+                                    number="{WEIGHT>END_WT}"
+                                    unit="{WEIGHT>UOM}"
+                                    state="{
+                                        parts: [
+                                            {path: 'WEIGHT>END_WT'},
+                                            {path: 'WEIGHT>UOM'}
+                                        ],
+                                        formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                    }" />                                                                 
+								<Text text="{WEIGHT>BATCH}"/>
+								<Text text="{WEIGHT>ASSET_BATCH}"/>
+								<Text text="{WEIGHT>ASSET_TYPE}"/>
+								<Text text="{WEIGHT>UPDATE_BY}"/>
+								<Text text="{WEIGHT>UPDATE_DATE}"/>
+
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+
+			</f:content>
+		</f:DynamicPage>
+</mvc:View>

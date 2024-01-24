@@ -1,0 +1,31 @@
+specVersion: "3.1"
+metadata:
+  name: zmrctree
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - scp: true
+            path: /sap
+            url: https://089b04d5-c34c-49d4-80b9-96228076931c.abap.us10.hana.ondemand.com
+            destination: abap-cloud-default_abap-trial-0a11883atrial-dev
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: zmrctree
+        ui5Theme: sap_fiori_3

@@ -1,0 +1,202 @@
+<mvc:View
+	controllerName="SmartFloor.AssembleWeight.controller.Main2"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:m="sap.m"
+    >
+	<tnt:ToolHeader>
+		<m:Button icon="sap-icon://menu2" type="Transparent">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="NeverOverflow" />
+			</m:layoutData>
+		</m:Button>
+		<m:Text text="Assembly Weight" wrapping="false">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="Disappear" />
+			</m:layoutData>
+		</m:Text>
+		<m:ToolbarSpacer />
+		<m:Button text="" icon="sap-icon://excel-attachment" type="Transparent" press="onExcelPress">
+			<m:layoutData>
+				<m:OverflowToolbarLayoutData priority="NeverOverflow" />
+			</m:layoutData>
+		</m:Button> 
+	</tnt:ToolHeader>
+
+    <Table
+        id="WeightTable"
+        rows="{ path: 'WEIGHT>/WeightCollection',
+                sorter:[{path: 'PLANT'}, {path: 'SFC'}]
+        }"
+        selectionMode="None"    
+        visibleRowCount="12"
+        visibleRowCountMode="Interactive"
+        >
+        <extension>
+            <m:OverflowToolbar style="Clear">
+                <m:Title id="title" text=""/>
+                <m:ToolbarSpacer/>
+                <m:Button
+                    text="Clear All Sortings"
+                    press="clearAllSortings"/>
+                <m:Button
+                    text="Clear All Filters"
+                    press="clearAllFilters"/>
+                <m:ToolbarSeparator/>
+                <m:SearchField
+                    placeholder="Filter"
+                    value="{ui>/globalFilter}"
+                    search="filterGlobally"
+                    width="15rem"/>
+            </m:OverflowToolbar>
+        </extension>
+
+        <columns>
+            <Column
+                id="plantId"
+                sortProperty="PLANT"
+                filterProperty="PLANT"
+                filterType= "sap.ui.model.type.String"
+                showFilterMenuEntry="true"
+                showSortMenuEntry="true">
+                <m:Label text="Plant" />
+                <template>
+                    <m:Text text="{WEIGHT>PLANT}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="SFCId"
+                filterProperty="SFC"
+                sortProperty="SFC"
+                >
+                <m:Label text="SFC" />
+                <template>
+                    <m:Text text="{WEIGHT>SFC}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="materialtId"
+                filterProperty="MATERIAL"
+                sortProperty="MATERIAL"
+                width="8rem">
+                <m:Label text="Material" />
+                <template>
+                    <m:Text text="{WEIGHT>MATERIAL}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="assetmaterialtId"
+                filterProperty="ASSET_MATERIAL"
+                sortProperty="ASSET_MATERIAL"
+                width="8rem">
+                <m:Label text="Asset Material" />
+                <template>
+                    <m:Text text="{WEIGHT>ASSET_MATERIAL}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="startId"
+                hAlign="End"
+                sortProperty="START_WT">
+                <m:Label text="Start WT" />
+                <template>     
+                    <m:ObjectStatus 
+                        text="{WEIGHT>START_WT} {WEIGHT>UOM}" 
+                        state="{path: 'WEIGHT>START_WT',
+
+                                formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                }"
+                                />        
+                </template>
+            </Column>
+            <Column
+                id="NetId"
+                hAlign="End"
+                sortProperty="NET_WT">
+                <m:Label text="Net WT" />
+                <template>     
+                     <m:ObjectStatus 
+                        text="{WEIGHT>NET_WT} {WEIGHT>UOM}" 
+                        state="{path: 'WEIGHT>NET_WT',
+                                formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                
+                                }"
+                                />  
+                </template>
+            </Column>
+            <Column
+                id="EndId"
+                hAlign="End"
+                sortProperty="END_WT">
+                <m:Label text="End WT" />
+                <template>     
+                    <m:ObjectStatus 
+                        text="{WEIGHT>END_WT} {WEIGHT>UOM}" 
+                        state="{path: 'WEIGHT>END_WT',
+                                formatter: 'SmartFloor.AssembleWeight.controller.Formatter.weightState'
+                                
+                                }"
+                                /> 
+                </template>
+            </Column>
+            <Column
+                id="batchId"
+                filterProperty="BATCH"
+                sortProperty="BATCH"
+                >
+                <m:Label text="Batch" />
+                <template>
+                    <m:Text text="{WEIGHT>BATCH}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="assetbatchId"
+                filterProperty="ASSET_BATCH"
+                sortProperty="ASSET_BATCH"
+                >
+                <m:Label text="Asset Batch" />
+                <template>
+                    <m:Text text="{WEIGHT>ASSET_BATCH}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="assettypeId"
+                filterProperty="ASSET_TYPE"
+                sortProperty="ASSET_TYPE"
+                >
+                <m:Label text="Asset Type" />
+                <template>
+                    <m:Text text="{WEIGHT>ASSET_TYPE}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="updatedById"
+                filterProperty="UPDATE_BY"
+                sortProperty="UPDATE_BY"
+                >
+                <m:Label text="Updated By" />
+                <template>
+                    <m:Text text="{WEIGHT>UPDATE_BY}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                id="updatedId"
+                filterProperty="UPDATE_DATE"
+                sortProperty="UPDATE_DATE"
+                >
+                <m:Label text="Updated" />
+                <template>
+                    <m:Text text="{WEIGHT>UPDATE_DATE}" wrapping="true" />
+                </template>
+            </Column>                   
+        </columns>
+
+    </Table>
+ 
+
+ 
+    
+</mvc:View>
