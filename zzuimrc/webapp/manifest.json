@@ -73,7 +73,8 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ushell": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -106,21 +107,37 @@
       "css": []
     },
     "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
           "name": "MRCList",
-          "target": "MRCList"
+          "target": [
+            "MRCList"
+          ]
         },
         {
           "pattern": "MRC({key}):?query:",
           "name": "MRCObjectPage",
-          "target": "MRCObjectPage"
+          "target": [
+            "MRCList",
+            "MRCObjectPage"
+          ]
         },
         {
           "pattern": "MRC({key})/_mrc_build({key2}):?query:",
           "name": "MRCBuildObjectPage",
-          "target": "MRCBuildObjectPage"
+          "target": [
+            "MRCList",
+            "MRCObjectPage",
+            "MRCBuildObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -140,7 +157,9 @@
                 }
               }
             }
-          }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
         },
         "MRCObjectPage": {
           "type": "Component",
@@ -158,7 +177,9 @@
                 }
               }
             }
-          }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/MRC({key})"
         },
         "MRCBuildObjectPage": {
           "type": "Component",
@@ -182,11 +203,35 @@
                 }
               }
             }
-          }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/MRC({key})/_mrc_build({key2})"
         }
       }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
     }
   },
+
+  "sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "settings": {
+        "forceGlobalRefresh": false,
+        "objectPageHeaderType": "Dynamic",
+        "considerAnalyticalParameters": true,
+        "showDraftToggle": false,
+        "flexibleColumnLayout": {
+            "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+            "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        }
+    }
+  },
+
+
   "sap.fiori": {
     "registrationIds": [],
     "archeType": "transactional"
