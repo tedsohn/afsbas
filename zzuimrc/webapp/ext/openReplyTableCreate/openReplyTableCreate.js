@@ -19,7 +19,11 @@ sap.ui.define([
             window.open('/sap/bc/ui5_ui5/sap/zzuireplytable/index.html',  "_blank");  
             //window.open('/sap/bc/ui5_ui5/sap/zzuireplytable/index.html#/ReplyTable(ReplyTableUUID=' + encodedUuid + ',IsActiveEntity=false)', "_blank");
             // this is to commit to basbranch1 
- 
+            
+            
+
+
+
         }
     };
 });

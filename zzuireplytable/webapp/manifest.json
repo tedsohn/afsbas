@@ -73,7 +73,8 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ushell": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -106,22 +107,37 @@
       "css": []
     },
     "routing": {
-      "config": {},
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
           "name": "ReplyTableList",
-          "target": "ReplyTableList"
+          "target": [
+            "ReplyTableList"
+          ]
         },
         {
           "pattern": "ReplyTable({key}):?query:",
           "name": "ReplyTableObjectPage",
-          "target": "ReplyTableObjectPage"
+          "target": [
+            "ReplyTableList",
+            "ReplyTableObjectPage"
+          ]
         },
         {
           "pattern": "ReplyTable({key})/_replycode({key2}):?query:",
           "name": "ReplyCodeObjectPage",
-          "target": "ReplyCodeObjectPage"
+          "target": [
+            "ReplyTableList",
+            "ReplyTableObjectPage",
+            "ReplyCodeObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -141,7 +157,9 @@
                 }
               }
             }
-          }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
         },
         "ReplyTableObjectPage": {
           "type": "Component",
@@ -159,7 +177,9 @@
                 }
               }
             }
-          }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/ReplyTable({key})"
         },
         "ReplyCodeObjectPage": {
           "type": "Component",
@@ -170,9 +190,17 @@
               "editableHeaderContent": false,
               "contextPath": "/ReplyTable/_replycode"
             }
-          }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/ReplyTable({key})/_replycode({key2})"
         }
       }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
     }
   },
   "sap.fiori": {
