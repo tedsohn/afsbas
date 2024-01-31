@@ -1,239 +1,240 @@
 {
-  "_version": "1.57.0",
-  "sap.app": {
-    "id": "zzuimrc",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:lrop",
-      "version": "1.12.2",
-      "toolsId": "a69d473a-f6af-44df-89e6-30696c699135"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata4/sap/zz_ui_mrc/srvd/sap/zz_sd_mrc/0001/",
-        "type": "OData",
-        "settings": {
-          "annotations": [
-            "annotation"
-          ],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "4.0"
-        }
-      },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
-        }
-      }
-    },
-    "crossNavigation": {
-      "inbounds": {
-        "ZZMRC-display": {
-          "semanticObject": "ZZMRC",
-          "action": "display",
-          "title": "{{flpTitle}}",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
-          }
-        }
-      }
-    }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.117.5",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.ushell": {},
-        "sap.fe.templates": {},
-        "sap.f": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "zzuimrc.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
-        }
-      },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
-      }
-    },
-    "resources": {
-      "css": []
-    },
-    "routing": {
-      "config": {
-        "flexibleColumnLayout": {
-          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
-          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+    "_version": "1.57.0",
+    "sap.app": {
+        "id": "zzuimrc",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
         },
-        "routerClass": "sap.f.routing.Router"
-      },
-      "routes": [
-        {
-          "pattern": ":?query:",
-          "name": "MRCList",
-          "target": [
-            "MRCList"
-          ]
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.12.2",
+            "toolsId": "a69d473a-f6af-44df-89e6-30696c699135"
         },
-        {
-          "pattern": "MRC({key}):?query:",
-          "name": "MRCObjectPage",
-          "target": [
-            "MRCList",
-            "MRCObjectPage"
-          ]
-        },
-        {
-          "pattern": "MRC({key})/_mrc_build({key2}):?query:",
-          "name": "MRCBuildObjectPage",
-          "target": [
-            "MRCList",
-            "MRCObjectPage",
-            "MRCBuildObjectPage"
-          ]
-        }
-      ],
-      "targets": {
-        "MRCList": {
-          "type": "Component",
-          "id": "MRCList",
-          "name": "sap.fe.templates.ListReport",
-          "options": {
-            "settings": {
-              "contextPath": "/MRC",
-              "variantManagement": "Page",
-              "navigation": {
-                "MRC": {
-                  "detail": {
-                    "route": "MRCObjectPage"
-                  }
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata4/sap/zz_ui_mrc/srvd/sap/zz_sd_mrc/0001/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
                 }
-              }
-            }
-          },
-          "controlAggregation": "beginColumnPages",
-          "contextPattern": ""
-        },
-        "MRCObjectPage": {
-          "type": "Component",
-          "id": "MRCObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/MRC",
-              "navigation": {
-                "_mrc_build": {
-                  "detail": {
-                    "route": "MRCBuildObjectPage"
-                  }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
                 }
-              }
             }
-          },
-          "controlAggregation": "midColumnPages",
-          "contextPattern": "/MRC({key})"
         },
-        "MRCBuildObjectPage": {
-          "type": "Component",
-          "id": "MRCBuildObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/MRC/_mrc_build",
-              "content": {
-                "header": {
-                  "actions": {
-                    "openReplyTableCreate": {
-                      "press": "zzuimrc.ext.openReplyTableCreate.openReplyTableCreate.fnNavitoReplyTableCreate",
-                      "visible": true,
-                      "enabled": true,
-                      "requiresSelection": false,
-                      "text": "Create Reply"
+        "crossNavigation": {
+            "inbounds": {
+                "ZZMRC-display": {
+                    "semanticObject": "ZZMRC",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
                     }
-                  }
                 }
-              }
             }
-          },
-          "controlAggregation": "endColumnPages",
-          "contextPattern": "/MRC({key})/_mrc_build({key2})"
         }
-      }
     },
-    "rootView": {
-      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
-      "type": "XML",
-      "async": true,
-      "id": "appRootView"
-    }
-  },
-
-  "sap.ui.generic.app": {
-    "_version": "1.3.0",
-    "settings": {
-        "forceGlobalRefresh": false,
-        "objectPageHeaderType": "Dynamic",
-        "considerAnalyticalParameters": true,
-        "showDraftToggle": false,
-        "flexibleColumnLayout": {
-            "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
-            "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
         }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.117.5",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zzuimrc.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+                },
+                "routerClass": "sap.f.routing.Router"
+            },
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "MRCList",
+                    "target": [
+                        "MRCList"
+                    ]
+                },
+                {
+                    "pattern": "MRC({key}):?query:",
+                    "name": "MRCObjectPage",
+                    "target": [
+                        "MRCList",
+                        "MRCObjectPage"
+                    ]
+                },
+                {
+                    "pattern": "MRC({key})/_mrc_build({key2}):?query:",
+                    "name": "MRCBuildObjectPage",
+                    "target": [
+                        "MRCList",
+                        "MRCObjectPage",
+                        "MRCBuildObjectPage"
+                    ]
+                }
+            ],
+            "targets": {
+                "MRCList": {
+                    "type": "Component",
+                    "id": "MRCList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/MRC",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "MRC": {
+                                    "detail": {
+                                        "route": "MRCObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "controlAggregation": "beginColumnPages",
+                    "contextPattern": ""
+                },
+                "MRCObjectPage": {
+                    "type": "Component",
+                    "id": "MRCObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/MRC",
+                            "navigation": {
+                                "_mrc_build": {
+                                    "detail": {
+                                        "route": "MRCBuildObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "controlAggregation": "midColumnPages",
+                    "contextPattern": "/MRC({key})"
+                },
+                "MRCBuildObjectPage": {
+                    "type": "Component",
+                    "id": "MRCBuildObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/MRC/_mrc_build",
+                            "content": {
+                                "header": {
+                                    "actions": {
+                                        "openReplyTableCreate": {
+                                            "press": "zzuimrc.ext.openReplyTableCreate.openReplyTableCreate.fnNavitoReplyTableCreate",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Create Reply"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "controlAggregation": "endColumnPages",
+                    "contextPattern": "/MRC({key})/_mrc_build({key2})"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false,
+            "flexibleColumnLayout": {
+                "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "zzuimrc"
     }
-  },
-
-
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "transactional"
-  }
 }
